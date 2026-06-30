@@ -9,8 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    pointer-events: none;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .modal-overlay.is-open {
@@ -43,6 +43,20 @@
     cursor: pointer;
     margin-bottom: 24px;
     flex-shrink: 0;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-container .close-button:hover {
+    background-color: #404bbf;
+
+}
+
+.modal-container .close-button-image {
+    transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-container .close-button:hover .close-button-image {
+    fill: #fff;
 }
 
 .modal-container .text {
@@ -163,19 +177,26 @@
     border: 1px solid #2e2f42;
     border-radius: 2px;
 
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-container .checkbox-icon {
     opacity: 0;
-    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-container .checkbox-input:checked+.checkbox-label .custom-checkbox {
+    background-color: #404bbf;
 }
 
 .modal-container .checkbox-input:checked+.checkbox-label .checkbox-icon {
     opacity: 1;
+    fill: #f4f4fd;
 }
 
 .checkbox-wrapper {
@@ -197,5 +218,13 @@
     color: #fff;
     border: none;
     flex-shrink: 0;
+    transition:
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+}
+
+.modal-container .send-button:active {
+    background-color: #404bbf;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
