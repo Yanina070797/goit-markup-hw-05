@@ -1,6 +1,5 @@
 .modal-overlay {
     background-color: rgba(46, 47, 66, 0.4);
-    ;
     position: fixed;
     top: 0;
     left: 0;
@@ -9,13 +8,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
 .modal-overlay.is-open {
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
 }
 
 .modal-container {
@@ -46,16 +47,17 @@
     transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-container .close-button:hover {
+.modal-container .close-button:hover, .modal-container .close-button:focus {
     background-color: #404bbf;
 
 }
 
 .modal-container .close-button-image {
+    fill: #2e2f42;
     transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-container .close-button:hover .close-button-image {
+.modal-container .close-button:hover .close-button-image, .modal-container .close-button:focus .close-button-image {
     fill: #fff;
 }
 
@@ -77,14 +79,12 @@
     color: #8e8f99;
     display: flex;
     flex-direction: column;
-    gap: 4px;
 }
 
 .modal-container .form-container {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-
+    gap: 4px;
 }
 
 .form-container .form-inputs {
@@ -93,7 +93,7 @@
     height: 40px;
     padding-left: 38px;
     font-size: 16px;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
@@ -118,23 +118,24 @@
 }
 
 .modal-container .input-icons-container:focus-within .form-inputs {
-    border: 1px solid #4d5ae5;
+    border-color: #4d5ae5;
+    outline: none;
 
 }
 
-.modal-container .input-icons-container:focus-within .form-textarea {
-    border: 1px solid #4d5ae5;
-
+.modal-container .form-textarea:focus-within {
+    border-color: #4d5ae5;
+    outline: none;
 }
 
 .modal-container .form-textarea {
     padding: 8px 16px;
     border: 1px solid rgba(46, 47, 66, 0.4);
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 12px;
     resize: none;
-    transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+    transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    height: 120px;
 }
 
 .modal-container .form-textarea::placeholder {
@@ -154,7 +155,7 @@
 }
 
 .modal-container .privacy-link {
-    line-height: 1.33333;
+    line-height: 1.17;
     text-decoration: underline;
     text-decoration-skip-ink: none;
     color: #4d5ae5;
@@ -219,12 +220,11 @@
     border: none;
     flex-shrink: 0;
     transition:
-        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+        background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
 
-.modal-container .send-button:active {
+.modal-container .send-button:active, .modal-container .send-button:hover, .modal-container .send-button:focus {
     background-color: #404bbf;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
 }
